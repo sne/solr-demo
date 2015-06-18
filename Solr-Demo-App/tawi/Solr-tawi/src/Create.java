@@ -7,10 +7,12 @@ import org.apache.solr.common.SolrInputDocument;
 public class Create {
 	
 	public static void main(String[] args) throws SolrServerException, IOException{
-		System.out.println("bla");
-		
+		createSNBHistoryBooks();
+	  }
+
+	public static void createSNBHistoryBooks() throws SolrServerException, IOException{
 		SolrClient server = new HttpSolrClient("http://localhost:8983/solr/tawi_core");
-	    for(int i=0;i<1000000;++i) {
+	    for(int i=0;i<1000;++i) {
 	      SolrInputDocument doc = new SolrInputDocument();
 	      doc.addField("cat", "book");
 	      doc.addField("id", "book-" + i);
@@ -18,8 +20,7 @@ public class Create {
 	      server.add(doc);
 	    }
 	    server.commit();
-	  }
-		
 	}
+}
 
 
